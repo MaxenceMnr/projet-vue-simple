@@ -1,12 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Simple</title>
 </head>
 <body>
+<div class="container" id="simple">
+    <div class="row">
+        <h1 class="mb-5 mt-4" style="font-size : 50px">Exercise Vue.js</h1>
+        <button v-on:click="recuperedPosts" class="col-12 mb-4">Blog 'Web And Sun'</button>
+        <button v-on:click="recuperedSecondPosts" class="col-12 mb-4">Blog 'Faute Tactique'</button>
+        <div v-for= "post in posts" class="d-none col-12 col-sm-6 col-lg-4 d-block mb-4">               
+        <div class="">
+            <div class="card" style="width: auto;">
+            <div class="card-body">
+              <h5 class="card-title">{{post.title.rendered}}</h5>
+              <img :src="post.jetpack_featured_media_url" width="100%">
+              <a :href="post.link" class="btn" style="background-color: antiquewhite; color :black;">Lien</a>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+        var demo = new Vue({
+        el: '#simple',
+        data:{
+            posts: []
+        },
     
+
+        methods: {
+            recuperedPosts: function()  {
+                vm = this
+                fetch('https://webandsun.com/wp-json/wp/v2/posts').then(function(response) {
+				    response.json().then(function(response){
+                       console.log(response)
+                        vm.posts = response
+                    })
+                })
+            },
+            recuperedSecondPosts: function()  {
+                vm2 = this
+                fetch('https://fautetactique.com/wp-json/wp/v2/posts').then(function(response) {
+				    response.json().then(function(response){
+                       console.log(response)
+                        vm2.posts = response
+                    })
+                })
+            }
+    }
+});
+    </script>
 </body>
 </html>
