@@ -8,21 +8,45 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>Projet Simpl</title>
+    <title>Projet Vue Simple</title>
 </head>
+<style>
+    .lien{
+        background-color : antiquewhite;
+        color : black;
+    }
+    .lien:hover{
+    background-color: dimgray;
+    color : white;
+    }
+    .btn-secondary{
+        border : none;
+    }
+    .btn-secondary:hover{
+        color : black;
+        background-color: antiquewhite;
+        border : none;
+    }
+    .btn-secondary:focus{
+        box-shadow : none;
+    }
+    .card-title{
+        font-size : 18px;
+    }
+</style>
 <body>
-<div class="container" id="simple">
+<div class="container" id="main">
     <div class="row">
-        <h1 class="mb-5 mt-4" style="font-size : 50px">Exercise Vue.js</h1>
+        <h1 class="mb-5 mt-4" style="font-size : 50px">Projet Vue.js simple</h1>
         <button v-on:click="recuperedPosts" class="col-12 mb-4 btn btn-secondary">Blog 'Web And Sun'</button>
         <button v-on:click="recuperedSecondPosts" class="col-12 mb-4 btn btn-secondary">Blog 'Faute Tactique'</button>
         <div v-for= "post in posts" class="d-none col-12 col-sm-6 col-lg-4 d-block mb-4">               
         <div class="">
             <div class="card" style="width: auto;">
             <div class="card-body">
-              <h5 class="card-title">{{post.title.rendered}}</h5>
-              <img :src="post.jetpack_featured_media_url" width="100%">
-              <a :href="post.link" class="btn" style="background-color: antiquewhite; color :black;">Lien</a>
+              <h5 class="card-title mb-3" v-html="post.title.rendered"></h5>
+              <img :src="post.jetpack_featured_media_url" width="100%" class="mb-2">
+              <a :href="post.link" class="btn lien col-12">Lire la suite</a>
             </div>
           </div>
         </div>
@@ -31,7 +55,7 @@
 
     <script>
         var demo = new Vue({
-        el: '#simple',
+        el: '#main',
         data:{
             posts: []
         },
