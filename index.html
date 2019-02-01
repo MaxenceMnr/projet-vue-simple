@@ -8,14 +8,14 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>Simple</title>
+    <title>Projet Simpl</title>
 </head>
 <body>
 <div class="container" id="simple">
     <div class="row">
         <h1 class="mb-5 mt-4" style="font-size : 50px">Exercise Vue.js</h1>
-        <button v-on:click="recuperedPosts" class="col-12 mb-4">Blog 'Web And Sun'</button>
-        <button v-on:click="recuperedSecondPosts" class="col-12 mb-4">Blog 'Faute Tactique'</button>
+        <button v-on:click="recuperedPosts" class="col-12 mb-4 btn btn-secondary">Blog 'Web And Sun'</button>
+        <button v-on:click="recuperedSecondPosts" class="col-12 mb-4 btn btn-secondary">Blog 'Faute Tactique'</button>
         <div v-for= "post in posts" class="d-none col-12 col-sm-6 col-lg-4 d-block mb-4">               
         <div class="">
             <div class="card" style="width: auto;">
